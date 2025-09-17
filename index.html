@@ -1,1 +1,209 @@
-hello
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Простая персональная страница для GitHub Pages.">
+  <title>Моё имя — Домашняя страница</title>
+  <style>
+    :root{
+      --bg: #ffffff;
+      --text: #111111;
+      --muted: #666666;
+      --card: #f4f4f5;
+      --accent: #2563eb;
+      --border: #e5e7eb;
+      --shadow: 0 8px 30px rgba(0,0,0,.06);
+      --radius: 16px;
+    }
+    html[data-theme="dark"]{
+      --bg: #0b0e14;
+      --text: #f3f4f6;
+      --muted: #a3a3a3;
+      --card: #151a22;
+      --accent: #60a5fa;
+      --border: #1f2937;
+      --shadow: 0 10px 40px rgba(0,0,0,.4);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font: 16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,'Helvetica Neue',Arial,'Apple Color Emoji','Segoe UI Emoji';
+      color: var(--text);
+      background: var(--bg);
+      scroll-behavior: smooth;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:960px; margin:0 auto; padding: 24px}
+    .skip-link{
+      position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
+    }
+    .skip-link:focus{
+      left: 16px; top: 16px; width:auto; height:auto; padding:8px 12px; background:var(--card); border-radius:8px; outline:2px solid var(--accent);
+    }
+    header{
+      position:sticky; top:0; backdrop-filter: saturate(180%) blur(8px);
+      background: color-mix(in sRGB, var(--bg) 85%, transparent);
+      border-bottom:1px solid var(--border);
+      z-index:10;
+    }
+    nav{display:flex; align-items:center; justify-content:space-between; gap:16px}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:700}
+    .brand svg{border-radius:50%; box-shadow: var(--shadow)}
+    .nav-links{display:flex; gap:12px; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 14px; border:1px solid var(--border); border-radius:999px;
+      background:var(--card);
+    }
+    .btn:hover{filter: brightness(1.02)}
+    .hero{
+      display:grid; grid-template-columns: 1fr; gap: 24px; padding: 32px 0 8px;
+    }
+    .hero h1{font-size: clamp(28px, 4vw, 40px); line-height:1.2; margin:0}
+    .hero p{margin: 8px 0 0; color:var(--muted)}
+    .cards{
+      display:grid; gap:16px; grid-template-columns: repeat(auto-fill, minmax(240px,1fr));
+      margin-top:16px;
+    }
+    .card{
+      background: var(--card);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding:16px;
+      box-shadow: var(--shadow);
+    }
+    .card h3{margin:4px 0 8px; font-size:18px}
+    .card p{margin:0; color:var(--muted)}
+    section{padding: 32px 0}
+    .muted{color:var(--muted)}
+    footer{padding:24px 0; border-top:1px solid var(--border); color:var(--muted)}
+    .tag{display:inline-block; padding:4px 10px; border-radius:999px; background:var(--card); border:1px solid var(--border); font-size:12px; color:var(--muted)}
+    .grid-2{display:grid; grid-template-columns: 1fr; gap:16px}
+    @media (min-width: 700px){
+      .hero{grid-template-columns: 1.2fr .8fr; align-items:center}
+      .grid-2{grid-template-columns: 1fr 1fr}
+    }
+    .kbd{font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace; background:var(--card); border:1px solid var(--border); border-bottom-width:3px; border-radius:6px; padding:2px 6px}
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Перейти к содержимому</a>
+
+  <header>
+    <div class="container">
+      <nav aria-label="Главная навигация">
+        <div class="brand">
+          <!-- простой аватар -->
+          <svg width="36" height="36" viewBox="0 0 36 36" role="img" aria-label="Логотип">
+            <defs>
+              <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0" stop-color="#60a5fa"/>
+                <stop offset="1" stop-color="#2563eb"/>
+              </linearGradient>
+            </defs>
+            <rect width="36" height="36" rx="9" fill="url(#g)"/>
+            <text x="50%" y="58%" font-size="18" text-anchor="middle" fill="white" font-family="system-ui, sans-serif">M</text>
+          </svg>
+          <span>Моё имя</span>
+        </div>
+        <div class="nav-links">
+          <a class="btn" href="#about">Обо мне</a>
+          <a class="btn" href="#projects">Проекты</a>
+          <a class="btn" href="#contact">Контакты</a>
+          <button id="themeToggle" class="btn" type="button" aria-label="Переключить тему">
+            <span aria-hidden="true">🌓</span> Тема
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <h1 id="hero-title">Привет! Я — <span style="white-space:nowrap">Моё имя</span>.</h1>
+        <p>Это минимальный сайт для GitHub Pages: быстро настраивается, адаптивен и без зависимостей.
+           Замените текст под себя и опубликуйте в пару кликов.</p>
+        <p class="muted">Подсказка: нажмите <span class="kbd">G</span> затем <span class="kbd">H</span> на GitHub, чтобы перейти на главную.</p>
+        <p style="margin-top:12px">
+          <a class="btn" href="#projects">Смотреть проекты →</a>
+        </p>
+      </div>
+      <div class="card">
+        <h3 style="margin:0 0 8px">Коротко обо мне</h3>
+        <p>Разрабатываю приложения, люблю математику и автоматизацию. Сейчас работаю над
+           <em>классным сайтом</em> на GitHub Pages 😊</p>
+        <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JS</span>
+          <span class="tag">GitHub Pages</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title">Обо мне</h2>
+      <div class="grid-2">
+        <p>Расскажите, кто вы, чем занимаетесь и что вам интересно. Этот шаблон полностью в одном файле
+           <code>index.html</code>, поэтому его удобно хранить в репозитории и публиковать через GitHub Pages.</p>
+        <p class="muted">Поддерживаются якорные ссылки, светлая/тёмная тема и сетка карточек. Код написан без фреймворков,
+           чтобы всё работало мгновенно.</p>
+      </div>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title">Проекты</h2>
+      <div class="cards" role="list">
+        <article class="card" role="listitem">
+          <h3>Шаблон GitHub Pages</h3>
+          <p>Этот сайт — пример. Скопируйте и начните с него.</p>
+        </article>
+        <article class="card" role="listitem">
+          <h3>Проект A</h3>
+          <p>Короткое описание. <a href="#" aria-label="Перейти к Проект A">Смотреть</a></p>
+        </article>
+        <article class="card" role="listitem">
+          <h3>Проект B</h3>
+          <p>Короткое описание. <a href="#" aria-label="Перейти к Проект B">Смотреть</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Контакты</h2>
+      <p>Связаться со мной: <a href="mailto:you@example.com">you@example.com</a> ·
+         <a href="https://github.com/username">GitHub</a> ·
+         <a href="https://t.me/username">Telegram</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      Сайт размещён на GitHub Pages. Сделано с ♥ без зависимостей.
+    </div>
+  </footer>
+
+  <script>
+    // Тема (светлая/тёмная) с сохранением в localStorage
+    (function(){
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const stored = localStorage.getItem('theme');
+      if(!stored){
+        document.documentElement.dataset.theme = prefersDark ? 'dark' : 'light';
+      } else {
+        document.documentElement.dataset.theme = stored;
+      }
+      const btn = document.getElementById('themeToggle');
+      btn?.addEventListener('click', () => {
+        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = next;
+        localStorage.setItem('theme', next);
+      });
+    })();
+  </script>
+</body>
+</html>
